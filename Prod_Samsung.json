@@ -1,0 +1,11 @@
+{
+
+"_id":"67a8e3f30a95dd39aea1ddea"
+   "nombre": "Samsung Galaxy S23",
+  "descripcion": "Teléfono Samsung con pantalla AMOLED y cámaras de alta resolución.",
+  "precio": 899.99,
+  "categoria_id": "602d2149e773f2a3990b47f5",
+  "activo": true,
+  "fecha_creacion": "2025-02-09T12:00:00Z"
+}
+

@@ -1,0 +1,47 @@
+--****Consulta para Mostrar Total de clientes registrados por mes y por año*****
+SELECT 
+    Anio_registro,
+    Mes_registro,
+    COUNT(*) AS Total_Clientes_Mes
+FROM clientes_ref2
+GROUP BY Anio_registro, Mes_registro
+ORDER BY Anio_registro, Mes_registro;
+
+--****Consulta para Mostrar Jerarquia de cliente, cliente nuevo y padre referido*****
+SELECT 
+    c.Id_cte, 
+    c.Nombre_cte,
+    c.Ref_cte,
+    r.Nombre_cte AS Nombre_Ref,
+    c.mes_registro,
+    c.anio_registro
+FROM clientes_ref2 c
+LEFT JOIN clientes_ref2 r ON c.Ref_cte = r.Id_cte  -- Unimos con la misma tabla para obtener el nombre del referente
+
+--****Tendencias de registros de clientes a pronosticar Para 2025*****
+
+WITH historico AS (
+    SELECT 
+        Anio_registro AS Anio, 
+        Mes_registro AS Mes, 
+        COUNT(*) AS Registros
+    FROM clientes_ref2
+    GROUP BY Anio_registro, Mes_registro
+),
+tendencia AS (
+    SELECT 
+        Anio, 
+        Mes, 
+        Registros,
+        LAG(Registros) OVER (PARTITION BY Mes ORDER BY Anio) AS Registros_Anterior
+    FROM historico
+)
+SELECT 
+    2025 AS Anio_Pronosticado,
+    Mes,
+    ROUND( (SELECT MAX(Registros) FROM historico WHERE Anio = 2024 AND Mes = t.Mes) + 
+           (SELECT AVG(Registros - Registros_Anterior) FROM tendencia WHERE Mes = t.Mes AND Registros_Anterior IS NOT NULL) 
+    ) AS Registros_Estimados
+FROM tendencia t
+WHERE t.Anio = 2024
+ORDER BY Mes;

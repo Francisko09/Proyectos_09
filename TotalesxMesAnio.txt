@@ -1,0 +1,7 @@
+SELECT 
+    Anio_registro,
+    Mes_registro,
+    COUNT(*) AS Total_Clientes
+FROM clientes_ref
+GROUP BY Anio_registro, Mes_registro
+ORDER BY Anio_registro, Mes_registro;

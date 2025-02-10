@@ -1,0 +1,4 @@
+CREATE INDEX idx_anio ON clientes_ref (Anio_registro);
+
+SELECT /*+ INDEX(clientes_ref idx_anio) */ * FROM clientes_ref WHERE Anio_registro = 2023;
+

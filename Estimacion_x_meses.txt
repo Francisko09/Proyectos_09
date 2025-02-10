@@ -1,0 +1,23 @@
+WITH registros_mensuales AS (
+    SELECT 
+        Anio_registro,
+        Mes_registro,
+        COUNT(*) AS Total_Registros,
+        ROUND(AVG(COUNT(*)) OVER (PARTITION BY Anio_registro), 2) AS Promedio_Mensual,
+        LAG(COUNT(*)) OVER (PARTITION BY Anio_registro ORDER BY Mes_registro) AS Registros_Mes_Anterior
+    FROM clientes_ref
+    GROUP BY Anio_registro, Mes_registro
+),
+prediccion_futura AS (
+    SELECT 
+        Anio_registro,
+        Mes_registro,
+        Total_Registros,
+        Promedio_Mensual,
+        Registros_Mes_Anterior,
+        -- Estimación de registros futuros basada en la tendencia histórica
+        ROUND(AVG(Total_Registros) OVER (PARTITION BY Mes_registro), 2) AS Estimacion_Futura
+    FROM registros_mensuales
+)
+SELECT * FROM prediccion_futura
+ORDER BY Anio_registro, Mes_registro;

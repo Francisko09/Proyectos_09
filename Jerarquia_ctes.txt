@@ -1,0 +1,10 @@
+SELECT 
+    c.Ref_cte,
+    r.Nombre_cte AS Nombre_Ref,
+    LISTAGG(c.Id_cte, ', ') WITHIN GROUP (ORDER BY c.Id_cte) AS Ids_Agrupados,
+    LISTAGG(c.Nombre_cte, ', ') WITHIN GROUP (ORDER BY c.Id_cte) AS Nombres_Agrupados,
+    COUNT(*) AS Total_Clientes
+FROM clientes_ref c
+LEFT JOIN clientes_ref r ON c.Ref_cte = r.Id_cte  -- Unimos con la misma tabla para obtener el nombre del referente
+GROUP BY c.Ref_cte, r.Nombre_cte
+ORDER BY c.Ref_cte NULLS FIRST;

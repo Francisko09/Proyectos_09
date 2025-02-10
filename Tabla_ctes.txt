@@ -1,0 +1,31 @@
+Id_cte
+Nombre_cte
+Ap_cte
+Am_cte
+Mail_cte
+Ref_cte
+Mes_registro
+Anio_registro
+
+CREATE TABLE clientes_ref (
+    Id_cte NUMBER PRIMARY KEY,
+    Nombre_cte VARCHAR2(50) NOT NULL,
+    Ap_cte VARCHAR2(50) NOT NULL,
+    Am_cte VARCHAR2(50),
+    Mail_cte VARCHAR2(100),
+    Ref_cte NUMBER,
+    Mes_registro NUMBER,
+    Anio_registro NUMBER
+);
+
+
+CREATE TABLE clientes_ref2 (
+    Id_cte NUMBER PRIMARY KEY,
+    Nombre_cte VARCHAR2(50) NOT NULL,
+    Ap_cte VARCHAR2(50) NOT NULL,
+    Am_cte VARCHAR2(50),
+    Mail_cte VARCHAR2(100),
+    Ref_cte NUMBER,
+    Mes_registro NUMBER,
+    Anio_registro NUMBER
+);

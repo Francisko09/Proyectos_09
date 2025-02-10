@@ -1,0 +1,10 @@
+{
+    "_id": "67a8e4f30a95dd39aea1dde8",
+    "nombre": "MacBook Air M2",
+    "descripcion": "Portátil de alto rendimiento con chip M2 y pantalla Retina.",
+    "precio": 1299.99,
+    "categoria_id": "602d2149e773f2a3990b47f5",
+    "stock": 30,
+    "activo": true,
+    "fecha_creacion": "2025-02-10T14:30:00Z"
+}

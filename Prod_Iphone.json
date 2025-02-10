@@ -1,0 +1,10 @@
+{
+ "_id": "67a8e3f30a95dd39aea1dde9",
+  "nombre": "iPhone 14",
+  "descripcion": "Último modelo de iPhone con cámara mejorada y mayor rendimiento.",
+  "precio": 999.99,
+  "categoria_id": "602d2149e773f2a3990b47f5",
+  "stock": 50,
+  "activo": true,
+  "fecha_creacion": "2025-02-09T12:00:00Z"
+}
